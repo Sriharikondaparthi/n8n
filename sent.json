@@ -1,0 +1,271 @@
+{
+  "name": "sent",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "044c4242-367b-4535-9c7c-e64376fcb451",
+              "leftValue": "={{ $json.Name }}{{ $json.Email }},",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -352,
+        -160
+      ],
+      "id": "6a0fb3ed-e297-4e3e-bcc7-017642c0fde0",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -272
+      ],
+      "id": "9d6232a4-aecf-4aeb-be53-8d7165a49d65",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "operation": "emailVerifier",
+        "email": "={{ $json.Email }}"
+      },
+      "type": "n8n-nodes-base.hunter",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -64
+      ],
+      "id": "c866e585-a593-4572-89e1-ce5c1282c9d1",
+      "name": "Hunter",
+      "credentials": {
+        "hunterApi": {
+          "id": "A5eePlGLLbrbqgaq",
+          "name": "Hunter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb86aa96-ec4d-40f7-aa4a-5dea2257600e",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "Deliverable",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        32,
+        -64
+      ],
+      "id": "9cc4163f-6003-4963-8b7f-7bc025f505b8",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "fromEmail": "sriharik@kuce.ac.in",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Application for Entry-Level Software Developer or Internship Position ",
+        "emailFormat": "text",
+        "text": "=Dear Sir/Madam,\n\nI hope you are doing well.\n\nMy name is Srihari Kondaparthi, currently pursuing my B.Tech in Computer Science Engineering (final year, 2026 pass-out) from University College of Engineering, Kakatiya University.\n\nI am writing to express my interest in an Entry-Level Software Developer or internship position in your organization. I have hands-on experience in Java, Html, CSS, JavaScript, MySQL, Workflow and Python. I have also worked on real-time projects such as:\n\n• Workflow automation using n8n and Docker\n• Gesture-controlled Virtual Mouse using Python and OpenCV\n• Tour & Travel Website using ReactJS and MySQL\n• CV Management Automation System using Python and Google Sheets\n• University website (currently working for univeristy) using Html,CSS,JavaScript\n\nI am confident that my technical skills, strong problem-solving abilities, and eagerness to learn will enable me to contribute meaningfully to your team.\n\nI have attached my resume for your review. I would be grateful for the opportunity to discuss how I can contribute to your organization.\nhttps://drive.google.com/file/d/1YoyvVo-Ig9Ec5VXRjiF_DVvYBCxH1c-c/view?usp=sharing\n\nThank you for your time and consideration.  \nLooking forward to your positive response.\n\nRegards,  \n**Srihari Kondaparthi**  \nPhone: 99897 40790  \nEmail: sriharik@kuce.ac.in \nLinkedIn: https://www.linkedin.com/in/srihari-kondaparthi  \nGitHub: https://github.com/Sriharikondaparthi\n",
+        "options": {
+          "attachments": "https://drive.google.com/file/d/1YoyvVo-Ig9Ec5VXRjiF_DVvYBCxH1c-c/view?usp=sharing"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        48
+      ],
+      "id": "e9831275-f932-4281-9622-daf1c16790a4",
+      "name": "Send email",
+      "webhookId": "cda4310d-12c6-4c45-a5b7-60983178ffb0",
+      "credentials": {
+        "smtp": {
+          "id": "CTt5BlEzmer6p8Wz",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -176
+      ],
+      "id": "22a2ecef-4dfe-4976-8bbe-f46c2f9d2291",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        -160
+      ],
+      "id": "52bfca0c-95e2-4ff2-aa9b-93358d03c54a",
+      "name": "start"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1RjaljeLujCjJOI-OoOHKDMwE2P0Z1sbaK1NUxuPrSVI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1698395567,
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RjaljeLujCjJOI-OoOHKDMwE2P0Z1sbaK1NUxuPrSVI/edit#gid=1698395567"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -512,
+        -160
+      ],
+      "id": "a477b6ae-84b6-4d65-8331-3901a0adeea3",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "GJx6IPRDb6r51Car",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hunter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        []
+      ]
+    },
+    "Hunter": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "start": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7cefb0ad-8528-48bc-873a-e499f0cb1b3e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cf6c76c0e2f3a1b49e3f3c0ef0ace8cf166147c72c9249ae012b37cdc389f775"
+  },
+  "id": "pVpCXaBQmR5x2YDj",
+  "tags": []
+}
